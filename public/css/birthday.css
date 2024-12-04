@@ -1,0 +1,424 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.title-container {
+    perspective: 1000px;
+    padding: 20px;
+    text-align: center;
+}
+
+.title {
+    font-size: 4em;
+    font-weight: bold;
+    margin: 0;
+    padding: 20px;
+}
+
+.title span {
+    display: inline-block;
+    opacity: 0;
+    transform-origin: center;
+    animation: titleAnimation 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+    padding: 0 2px;
+}
+
+.title span:nth-child(1) { animation-delay: 0.1s; }
+.title span:nth-child(2) { animation-delay: 0.2s; }
+.title span:nth-child(3) { animation-delay: 0.3s; }
+.title span:nth-child(4) { animation-delay: 0.4s; }
+.title span:nth-child(5) { animation-delay: 0.5s; }
+.title span:nth-child(6) { animation-delay: 0.6s; }
+.title span:nth-child(7) { animation-delay: 0.7s; }
+.title span:nth-child(8) { animation-delay: 0.8s; }
+.title span:nth-child(9) { animation-delay: 0.9s; }
+.title span:nth-child(10) { animation-delay: 1.0s; }
+.title span:nth-child(11) { animation-delay: 1.1s; }
+.title span:nth-child(12) { animation-delay: 1.2s; }
+.title span:nth-child(13) { animation-delay: 1.3s; }
+.title span:nth-child(14) { animation-delay: 1.4s; }
+.title span:nth-child(15) { animation-delay: 1.5s; }
+.title span:nth-child(16) { animation-delay: 1.6s; }
+.title span:nth-child(17) { animation-delay: 1.7s; }
+.title span:nth-child(18) { animation-delay: 1.8s; }
+.title span:nth-child(19) { animation-delay: 1.9s; }
+.title span:nth-child(20) { animation-delay: 2.0s; }
+.title span:nth-child(21) { animation-delay: 2.1s; }
+
+.title span:hover {
+    animation: rubberBand 1s;
+    cursor: default;
+}
+
+@keyframes titleAnimation {
+    0% {
+        opacity: 0;
+        transform: rotateX(-90deg) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg) translateY(0);
+    }
+}
+
+@keyframes rubberBand {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.title-container {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.title span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+    transform: skewX(-20deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        width: 0;
+        left: 0;
+    }
+    50% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+
+.cake {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    margin: 50px auto;
+}
+
+.plate {
+    position: absolute;
+    bottom: 0;
+    width: 270px;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    left: -10px;
+}
+
+.layer {
+    position: absolute;
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.layer-bottom {
+    bottom: 20px;
+    background: #f8a5c2;
+}
+
+.layer-middle {
+    bottom: 60px;
+    background: #f78fb3;
+    width: 220px;
+    left: 15px;
+}
+
+.layer-top {
+    bottom: 100px;
+    background: #f56ba2;
+    width: 180px;
+    left: 35px;
+}
+
+.icing {
+    position: absolute;
+    width: 250px;
+    height: 4px;
+    background: white;
+    top: 60px;
+}
+
+.candle {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background: #fdcb6e;
+    top: 20px;
+    left: 115px;
+    border-radius: 4px;
+}
+
+.flame {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    background: #ffeaa7;
+    border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
+    top: -30px;
+    animation: flicker 1s infinite;
+    box-shadow: 0 0 20px #ffeaa7,
+                0 0 40px #ffeaa7,
+                0 0 60px #ff9f43;
+    display: block;
+}
+
+.wishes {
+    color: white;
+    font-size: 1.5em;
+    margin: 20px 0;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.wishes p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.balloons {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.balloon {
+    position: absolute;
+    width: 40px;
+    height: 50px;
+    background: #ff7675;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    width: 2px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.balloon:nth-child(1) { left: 5%; animation-delay: 0s; }
+.balloon:nth-child(2) { left: 25%; animation-delay: 1s; }
+.balloon:nth-child(3) { left: 45%; animation-delay: 2s; }
+.balloon:nth-child(4) { left: 65%; animation-delay: 3s; }
+.balloon:nth-child(5) { left: 85%; animation-delay: 4s; }
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes flicker {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    50% { transform: translateY(50vh) rotate(10deg); }
+    100% { transform: translateY(-20vh) rotate(-10deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.1); }
+}
+
+.cake:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+@keyframes sparkle {
+    0%, 100% { text-shadow: 2px 2px 4px rgba(255,255,255,0.3); }
+    50% { text-shadow: 2px 2px 15px rgba(255,215,0,0.7); }
+}
+
+.blow-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 100;
+}
+
+.blow-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background: linear-gradient(45deg, #ff5252, #ffc107);
+}
+
+.blow-button:active {
+    transform: translateY(1px);
+}
+
+.blow-button:disabled {
+    background: linear-gradient(45deg, #4ecdc4, #45b7af);
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.8;
+}
+
+@keyframes sparkle {
+    0%, 100% { 
+        box-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
+    }
+    50% { 
+        box-shadow: 0 0 25px rgba(78, 205, 196, 0.8);
+    }
+}
+
+.blow-button:disabled {
+    animation: sparkle 1.5s infinite;
+}
+
+/* Tambahkan media query untuk layar kecil */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.8em;
+        padding: 5px;
+        word-break: break-word;
+    }
+
+    .cake {
+        transform: scale(0.8);
+        margin: 20px auto;
+    }
+
+    .wishes {
+        font-size: 1em;
+        padding: 0 10px;
+    }
+
+    .blow-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+        margin: 15px 0;
+    }
+}
+
+/* iPhone SE, 5, 5S, 5C */
+@media screen and (max-width: 320px) {
+    .title {
+        font-size: 1.2em;
+    }
+
+    .cake {
+        transform: scale(0.6);
+        margin: 10px auto;
+    }
+
+    .wishes {
+        font-size: 0.9em;
+    }
+}
+
+/* iPhone X, 11, 12, 13 */
+@media screen and (min-width: 375px) and (max-width: 414px) and (-webkit-device-pixel-ratio: 2) {
+    .title {
+        font-size: 1.5em;
+    }
+
+    .cake {
+        transform: scale(0.7);
+        margin: 15px auto;
+    }
+}
+
+/* Android Devices */
+@media screen and (max-width: 480px) and (min-resolution: 1.5dppx) {
+    .title {
+        font-size: 1.4em;
+    }
+
+    .cake {
+        transform: scale(0.7);
+    }
+}
+
+/* Safe area untuk iPhone X keatas */
+@supports (padding: max(0px)) {
+    .container {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+}

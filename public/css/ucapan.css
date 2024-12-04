@@ -1,0 +1,558 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+        -45deg, 
+        #ffe5f1, 
+        #ffd1dc, 
+        #fff0f5,
+        #ffb6c1,
+        #ffc0cb
+    );
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 100%;
+    width: 95%;
+    margin: 1rem auto;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+    justify-content: space-between;
+}
+
+.profile-pic {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 15px;
+    border: 8px solid #fff;
+    box-shadow: 0 0 30px rgba(255, 182, 193, 0.7);
+    margin: 35px auto 15px auto;
+    animation: float 3s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+    object-fit: cover;
+}
+
+/* Semua animasi keyframes */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 0 0 5px #ff4d8d, 0 0 10px #ff4d8d; }
+    50% { text-shadow: 0 0 20px #ff4d8d, 0 0 30px #ff4d8d; }
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes celebrate {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+/* Semua komponen lainnya */
+.profile-frame {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-frame::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border: 4px solid #ffb6c1;
+    border-radius: 20px;
+    animation: rotate 10s linear infinite;
+}
+
+/* Galeri foto */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.photo-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: translateY(-5px);
+}
+
+.photo-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Modal dan tombol */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    width: 95%;
+    max-width: 800px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+
+.memory-btn {
+    padding: 12px 25px;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(45deg, #ff8fab, #ff4d8d);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 77, 141, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto;
+    width: auto;
+    min-width: 150px;
+    max-width: 90%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 90%;
+        margin: 0.5rem auto;
+    }
+
+    .profile-pic {
+        max-width: 450px;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 5px;
+    }
+
+    .profile-pic {
+        max-width: 350px;
+        border-width: 6px;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 8px;
+        margin-bottom: 30px;
+    }
+    
+    .photo-item img {
+        height: 160px;
+    }
+
+    .memory-btn {
+        padding: 10px 20px;
+        min-width: 130px;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+
+    .birthday-message {
+        padding: 15px;
+        margin: 1rem auto;
+    }
+    
+    .quote-section {
+        padding: 15px;
+        margin: 1rem auto;
+    }
+
+    .quote {
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        padding: 10px;
+        line-height: 1.5;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 98%;
+        padding: 3px;
+    }
+
+    .profile-pic {
+        max-width: 280px;
+        border-width: 4px;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        padding: 6px;
+        margin-bottom: 25px;
+    }
+
+    .photo-item img {
+        height: 140px;
+    }
+
+    .memory-btn {
+        padding: 8px 16px;
+        min-width: 120px;
+        font-size: 1rem;
+        margin-top: 12px;
+        margin-bottom: 20px;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .quote-section {
+        padding: 10px;
+        margin: 0.5rem auto;
+    }
+
+    .quote {
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        padding: 8px;
+    }
+}
+
+/* Khusus untuk HP dengan layar sangat kecil */
+@media screen and (max-width: 360px) {
+    .profile-pic {
+        max-width: 240px;
+    }
+
+    .photo-gallery {
+        gap: 4px;
+        padding: 4px;
+    }
+
+    .photo-item img {
+        height: 120px;
+    }
+
+    .memory-btn {
+        min-width: 100px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Untuk orientasi landscape di mobile */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .container {
+        min-height: auto;
+    }
+
+    .profile-pic {
+        max-width: 200px;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .photo-item img {
+        height: 150px;
+    }
+}
+
+/* Perbaikan untuk device dengan notch/dynamic island */
+@supports (padding-top: env(safe-area-inset-top)) {
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+}
+
+/* Perbaikan untuk iOS */
+@supports (-webkit-touch-callout: none) {
+    .container {
+        min-height: -webkit-fill-available;
+    }
+    
+    body {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Update style untuk modal dan video container */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    width: 95%;
+    max-width: 800px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    margin: 10px;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+#videoFrame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    width: 30px;
+    height: 30px;
+    background: #ff4d8d;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Media Queries untuk modal video */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        padding: 12px;
+    }
+
+    .close-btn {
+        right: -10px;
+        top: -10px;
+        width: 25px;
+        height: 25px;
+        font-size: 18px;
+    }
+}
+
+.birthday-message {
+    margin: 2rem auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
+    max-width: 600px;
+}
+
+.birthday-message p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #ff4d8d;
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.quote-section {
+    margin: 2rem auto;
+    padding: 30px;
+    max-width: 800px;
+}
+
+.quote {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    color: #ff1a75;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.8;
+    text-shadow: 2px 2px 4px rgba(255, 26, 117, 0.2);
+    padding: 20px;
+   
+}
+
+.photo-caption {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #ff4d8d;
+    font-size: 0.9rem;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .birthday-message {
+        padding: 15px;
+        margin: 1rem auto;
+    }
+    
+    .quote-section {
+        padding: 15px;
+        margin: 1rem auto;
+    }
+
+    .quote {
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        padding: 10px;
+        line-height: 1.5;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .quote-section {
+        padding: 10px;
+        margin: 0.5rem auto;
+    }
+
+    .quote {
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        padding: 8px;
+    }
+}
+
+/* Tambahkan styles untuk shooting stars */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 150px;
+    height: 3px;
+    animation: shootingStars 3.5s ease-in-out infinite;
+    opacity: 0;
+    transform: rotate(-45deg);
+    transition: all 0.3s ease;
+}
+
+.shooting-star::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 20px currentColor,
+                0 0 40px currentColor,
+                0 0 60px currentColor,
+                0 0 80px currentColor;
+    transition: all 0.3s ease;
+}
+
+@keyframes shootingStars {
+    0% {
+        transform: translateX(100vw) translateY(-100vh) rotate(-45deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100vw) translateY(100vh) rotate(-45deg);
+        opacity: 0;
+    }
+}
